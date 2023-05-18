@@ -15,6 +15,7 @@ koalaRouter.get('/',(req,res)=>{
     pool.query(queryText) 
     .then(result => {
         //send content to client
+        console.log(result.rows);
         res.send(result.rows);
     }).catch(error =>{
         console.log('we have an error in our get', error);
@@ -37,7 +38,6 @@ koalaRouter.post('/',(req,res)=>{
 
     pool.query(queryText, values)
     .then(result => {
-        console.log('Is it posting?');
         res.sendStatus(201); // its working :)
     }).catch(error =>{
         console.log('we have an error in our post', error);
