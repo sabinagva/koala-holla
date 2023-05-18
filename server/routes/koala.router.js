@@ -11,8 +11,8 @@ const pool = require('../modules/pool');
 // GET
 
 koalaRouter.get('/',(req,res)=>{
-    let queryText = 'SELECT * FROM "koala";';
-    pool.query(queryText)
+    let queryText = 'SELECT * FROM "koala";'; // get all of the data from the table and name it queryText
+    pool.query(queryText) 
     .then(result => {
         //send content to client
         res.send(result.rows);
@@ -37,6 +37,7 @@ koalaRouter.post('/',(req,res)=>{
 
     pool.query(queryText, values)
     .then(result => {
+        console.log('Is it posting?');
         res.sendStatus(201); // its working :)
     }).catch(error =>{
         console.log('we have an error in our post', error);
@@ -46,6 +47,39 @@ koalaRouter.post('/',(req,res)=>{
 
 
 // PUT
+
+
+koalaRouter.put('/:id',(req,res)=>{
+    let idToUpdate = req.params.id;
+    let queryText = '';
+
+
+
+   
+    pool.query(queryText, values)
+    .then(result => {
+        res.sendStatus(201); // its working :)
+    }).catch(error =>{
+        console.log('we have an error in our post', error);
+        res.sendStatus(500); // its not working :(
+    })
+});
+
+
+koalaRouter.delete('/:id',(req,res)=>{
+    let idToDelete = req.params.id;
+    let queryText = 'DELETE FROM "koala" WHERE "id" = $1 ';
+
+    pool.query(queryText, [idToDelete])
+    .then(result => {
+        console.log(' Koala has been tactically removed from table and this plane of existance');
+        res.sendStatus(201); // its working :)
+    }).catch(error =>{
+        console.log('The koala is still present, work harder', error);
+        res.sendStatus(500); // its not working :(
+    })
+});
+
 
 
 
