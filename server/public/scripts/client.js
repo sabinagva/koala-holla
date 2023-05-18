@@ -49,8 +49,12 @@ function getKoalas(){
     url: '/koalas',
   })
   .then(function(response){
-    
+    console.log('getKoalas response:', response);
+    renderToDom(response);
   })
+  .catch(function(error){
+    console.log('error in GET', error);
+  });
 } // end getKoalas
 
 // function saveKoala( newKoala ){
