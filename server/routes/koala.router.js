@@ -7,8 +7,8 @@ const pool = require('../modules/pool');
 
 // GET
 koalaRouter.get('/',(req,res)=>{
-    let queryText = 'SELECT * FROM "koala";';
-    pool.query(queryText)
+    let queryText = 'SELECT * FROM "koala";'; // get all of the data from the table and name it queryText
+    pool.query(queryText) 
     .then(result => {
         //send content to client
         console.log(result.rows);
@@ -33,7 +33,6 @@ koalaRouter.post('/',(req,res)=>{
 
     pool.query(queryText, values)
     .then(result => {
-        console.log(req.body)
         res.sendStatus(201); // its working :)
     }).catch(error =>{
         console.log('we have an error in our post', error);
