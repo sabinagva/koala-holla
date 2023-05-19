@@ -62,9 +62,9 @@ function getKoalas(){
 function renderToDom(response){
   $('#viewKoalas').empty();
   for (koala of response){
-    if (koala.ready_to_transfer === false){
+    if (!koala.ready_to_transfer){
       $('#viewKoalas').append(`
-    <tr>
+    <tr data-id="${koala.id}">
         <td>${koala.name}</td>
         <td>${koala.age}</td>
         <td>${koala.gender}</td>
@@ -75,7 +75,7 @@ function renderToDom(response){
       </tr>
     `)
     } else { $('#viewKoalas').append(`
-    <tr>
+    <tr data-id="${koala.id}">
         <td>${koala.name}</td>
         <td>${koala.age}</td>
         <td>${koala.gender}</td>
