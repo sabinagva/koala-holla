@@ -5,6 +5,9 @@ $( document ).ready( function(){
   $( '#addButton' ).on( 'click', addKoala);
   getKoalas();
   $('#viewKoalas').on('click', "#delete-button", deleteKoala);
+  $('#viewKoalas').on('click', "#ready-to-button", putKoala);
+
+  
 }); // end doc ready
 
 function addKoala() {
@@ -87,6 +90,48 @@ function renderToDom(response){
   console.log('true?', koala.ready_to_transfer);
 }
 
-// function deleteKoala(){
 
-//
+// Deletes a row from the table
+function deleteKoala(){
+  console.log('Delete mcYeet button clicked');
+
+  const idToDelete = $(this).closest('tr').data('id');
+
+  $.ajax({
+    method: 'DELETE',
+    url:`/koalas/${idToDelete}`
+  }).then(function(response){
+    console.log('Delete koala works');
+    getKoalas();
+
+  }).catch(error=>{
+    console.log('Delete koala is not functioning ');
+  })
+
+}
+
+// updates True and false values of a row
+function putKoala(){
+  console.log('koala button clicked ');
+
+  const idToUpdate = $(this).closest('tr').data('id');
+
+  // value is going to be the true and false value
+  let data = {
+    value: false 
+  }
+
+  $.ajax({
+    method: 'PUT',
+    url:`/koalas/${idToUpdate}`
+  }).then(function(response){
+    console.log('update koala works', response);
+    getKoalas();
+
+  }).catch(error=>{
+    console.log('update koala is not functioning',error);
+  })
+
+}
+
+

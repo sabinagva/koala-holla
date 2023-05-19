@@ -1,3 +1,93 @@
+/* GLOBAL TYPOGRAPHY STYLES */
+body {
+  background-color: #dcdcdc;
+  font-family: 'times new roman', sans-serif;
+  color: #5a55b3;
+  font-size: 1.35em;
+}
+
+  
+dib.moveable{position: relative;
+  bottom:50px;
+
+}
+/* MINIMAL FLEX LAYOUT */
+html, body {
+  min-height: 100vh;
+  margin: auto;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  height: 8em;
+  background-color: white;
+  position: relative;
+
+}
+main {
+  flex: auto;
+  max-width: 80%;
+  margin: auto;
+}
+footer {
+  height: 100%;
+  display: flex;
+  padding: 10px;
+  justify-content: right;
+  align-items: right;
+  color: white;
+  background-color: green;
+  text-align: right;
+  border-bottom: 1px black;
+ 
+  
+}
+h1{
+  font-size: 2.5em;
+}
+
+/* HEADER/FOOTER */
+header {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 h1 {
-    background-color: hotpink;
+  font-size: 2.5em;
+}
+
+input {
+  padding: .5em;
+  width: 150px;
+  background: #FCFCFC;
+  border: 2px solid;
+}
+button {
+  padding: .5em;
+  width: 75px;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  height: 2.15em;
+}
+th, td {
+  padding: .5em;
+  min-width: 3.5em;
+}
+thead tr:nth-child(odd) {
+  background: #5a55b3;
+  color: #fcfcfc;  
+}
+thead tr:nth-child(even){
+  background-color: #8985cb;
+  color:#fcfcfc;
 }
